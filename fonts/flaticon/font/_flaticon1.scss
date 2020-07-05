@@ -1,0 +1,126 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 05/07/2020 16:51
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff2") format("woff2"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-apartment:before { content: "\f100"; }
+.flaticon-interior-design:before { content: "\f101"; }
+.flaticon-pin:before { content: "\f102"; }
+.flaticon-percentage:before { content: "\f103"; }
+.flaticon-price-tag:before { content: "\f104"; }
+.flaticon-real-state:before { content: "\f105"; }
+.flaticon-for-sale:before { content: "\f106"; }
+.flaticon-house:before { content: "\f107"; }
+.flaticon-buy:before { content: "\f108"; }
+.flaticon-house-1:before { content: "\f109"; }
+.flaticon-recycle-water:before { content: "\f10a"; }
+.flaticon-water:before { content: "\f10b"; }
+.flaticon-drop:before { content: "\f10c"; }
+.flaticon-water-1:before { content: "\f10d"; }
+.flaticon-waterfall:before { content: "\f10e"; }
+.flaticon-wind:before { content: "\f10f"; }
+.flaticon-lock:before { content: "\f110"; }
+.flaticon-home:before { content: "\f111"; }
+.flaticon-draws:before { content: "\f112"; }
+.flaticon-wardrobe:before { content: "\f113"; }
+.flaticon-wardrobe-1:before { content: "\f114"; }
+.flaticon-clothes:before { content: "\f115"; }
+.flaticon-wardrobe-2:before { content: "\f116"; }
+.flaticon-air-conditioner:before { content: "\f117"; }
+.flaticon-air-conditioner-1:before { content: "\f118"; }
+.flaticon-curtains:before { content: "\f119"; }
+.flaticon-stage:before { content: "\f11a"; }
+.flaticon-shower:before { content: "\f11b"; }
+.flaticon-basin:before { content: "\f11c"; }
+.flaticon-pipeline:before { content: "\f11d"; }
+.flaticon-subway-sign:before { content: "\f11e"; }
+.flaticon-subway:before { content: "\f11f"; }
+.flaticon-school:before { content: "\f120"; }
+.flaticon-school-1:before { content: "\f121"; }
+.flaticon-cart:before { content: "\f122"; }
+.flaticon-shopping:before { content: "\f123"; }
+.flaticon-grocery:before { content: "\f124"; }
+.flaticon-supermarket:before { content: "\f125"; }
+.flaticon-mcdonalds:before { content: "\f126"; }
+.flaticon-bus-stop:before { content: "\f127"; }
+.flaticon-bus-stop-1:before { content: "\f128"; }
+.flaticon-bank:before { content: "\f129"; }
+.flaticon-bank-1:before { content: "\f12a"; }
+    
+    $font-Flaticon-apartment: "\f100";
+    $font-Flaticon-interior-design: "\f101";
+    $font-Flaticon-pin: "\f102";
+    $font-Flaticon-percentage: "\f103";
+    $font-Flaticon-price-tag: "\f104";
+    $font-Flaticon-real-state: "\f105";
+    $font-Flaticon-for-sale: "\f106";
+    $font-Flaticon-house: "\f107";
+    $font-Flaticon-buy: "\f108";
+    $font-Flaticon-house-1: "\f109";
+    $font-Flaticon-recycle-water: "\f10a";
+    $font-Flaticon-water: "\f10b";
+    $font-Flaticon-drop: "\f10c";
+    $font-Flaticon-water-1: "\f10d";
+    $font-Flaticon-waterfall: "\f10e";
+    $font-Flaticon-wind: "\f10f";
+    $font-Flaticon-lock: "\f110";
+    $font-Flaticon-home: "\f111";
+    $font-Flaticon-draws: "\f112";
+    $font-Flaticon-wardrobe: "\f113";
+    $font-Flaticon-wardrobe-1: "\f114";
+    $font-Flaticon-clothes: "\f115";
+    $font-Flaticon-wardrobe-2: "\f116";
+    $font-Flaticon-air-conditioner: "\f117";
+    $font-Flaticon-air-conditioner-1: "\f118";
+    $font-Flaticon-curtains: "\f119";
+    $font-Flaticon-stage: "\f11a";
+    $font-Flaticon-shower: "\f11b";
+    $font-Flaticon-basin: "\f11c";
+    $font-Flaticon-pipeline: "\f11d";
+    $font-Flaticon-subway-sign: "\f11e";
+    $font-Flaticon-subway: "\f11f";
+    $font-Flaticon-school: "\f120";
+    $font-Flaticon-school-1: "\f121";
+    $font-Flaticon-cart: "\f122";
+    $font-Flaticon-shopping: "\f123";
+    $font-Flaticon-grocery: "\f124";
+    $font-Flaticon-supermarket: "\f125";
+    $font-Flaticon-mcdonalds: "\f126";
+    $font-Flaticon-bus-stop: "\f127";
+    $font-Flaticon-bus-stop-1: "\f128";
+    $font-Flaticon-bank: "\f129";
+    $font-Flaticon-bank-1: "\f12a";
