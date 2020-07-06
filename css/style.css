@@ -48,6 +48,7 @@ html{
   padding: 10px ;
   text-align: center;
   list-style-type: none;
+  flex-wrap:wrap;
 }
 .footer-container{
   text-align: center;
@@ -55,6 +56,8 @@ html{
 
 .nav-item-footer{
   text-decoration: none;
+  text-align:center;
+  margin: auto;
 }
 
 .connectivity-list{
