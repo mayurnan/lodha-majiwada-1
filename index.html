@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body data-spy="scroll" data-target=".navbar-nav">
+    <div class="parent-body">
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
 	      <a class="navbar-brand" href="index.html">LODHA</a>
@@ -430,23 +431,25 @@
           </div>
         </div>
         <h2 class="text-center ftco-animate">If you got any questions <br>please do not hesitate to send us a message</h2>
-        <form action="#" class=" contact-form ftco-animate text-center">
-            <div class="form-group ">
-            <input type="text" class="form-control" placeholder="Your Name">
+        <form  class=" contact-form ftco-animate text-center" onsubmit="submitForm(event)" id="contacForm" enctype="multipart/form-data" method="POST">
+            <div class="form-group">
+            <input type="text" class="form-control" placeholder="Your Name" name="name" id="form-name" required>
             </div>
             <div class="form-group">
-            <input type="text" class="form-control" placeholder="Your Email">
+            <input type="email" class="form-control" placeholder="Your Email" namee="email" id="form-email" required >
             </div>
             <div class="form-group">
-            <input type="text" class="form-control" placeholder="Subject">
+            <input type="text" class="form-control" placeholder="Subject" name="subject" id="form-subject" required>
             </div>
             <div class="form-group">
-            <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+            <textarea name="emailBody" id="form-body" cols="30" rows="7" class="form-control" placeholder="Message" required></textarea>
             </div>
+            <input type="hidden" id="IP" >
             <div class="form-group">
             <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
             </div>
         </form>
+        <div id="response"></div>
       </div>
     </section>
 
@@ -472,10 +475,7 @@
       <a href="#contact"><button type="button" class="btn btn-primary ftco-animate"  data-target="#contact"  data-watever="Contact US">Contant US</button></a>
 <!-- 	      <button type="button" data-target="#contact" class="btn btn-primary ftco-animate" >Contact Us</button> -->
     </div>
-
-      </div>
     </section>
-
     <div class="modal-container">
         <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
             <!-- <div class="modal-dialog" role="document"> -->
@@ -489,7 +489,7 @@
                     <!-- <div class="row block-9 justify-content-center mb-5"> -->
                         <!-- <div> -->
                             <h2 class="text-center">If you got any questions <br>please do not hesitate to send us a message</h2>
-                        <form action="" class="bg-light p-5 contact-form">
+                        <form  class="bg-light p-5 contact-form" id="contacForm1" >
                             <div class="form-group">
                             <input type="text" class="form-control" placeholder="Your Name">
                             </div>
@@ -503,10 +503,9 @@
                             <textarea name="" id="" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
                             </div>
                             <div class="form-group">
-                            <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                            <input type="submit"  value="Send Message" class="btn btn-primary py-3 px-5" >
                             </div>
                         </form>
-                        
                         <!-- </div> -->
                     <!-- </div> -->
                 </div>
@@ -514,45 +513,10 @@
             <!-- </div> -->
         </div>
     </div>
-
-    <script>
-      $('a[href^="#"]').click(function(event) {
-        var id = $(this).attr("href");
-        var target = $(id).offset().top;
-        $('html, body').animate({scrollTop:target}, 500);
-        event.preventDefault();
-      });
-
-      function getTargetTop(elem){
-        var id = elem.attr("href");
-        var offset = 60;
-        return $(id).offset().top - offset;
-      }
-
-
-        $(window).scroll(function(e){
-          isSelected($(window).scrollTop())
-        });
-
-      var sections = $('a[href^="#"]');
-
-      function isSelected(scrolledTo){
-        
-        var threshold = 100;
-        var i;
-
-        for (i = 0; i < sections.length; i++) {
-          var section = $(sections[i]);
-          var target = getTargetTop(section);
-          
-          if (scrolledTo > target - threshold && scrolledTo < target + threshold) {
-            sections.removeClass("active");
-            section.addClass("active");
-          }
-
-        };
-      }
-    </script>
+</div>
+<section class="loader-section">
+  <div class="loader"></div> 
+</section>
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -567,7 +531,145 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-    
+  <script>
+    (  function(){
+      $.getJSON('http://gd.geobytes.com/GetCityDetails?callback=?', function(data) {
+        console.log(JSON.stringify(data, null, 2));
+        document.getElementById('IP').value=JSON.stringify(data.geobytesipaddress);
+      })
+    })();
+    function submitForm(event){
+      event.preventDefault()
+      event.stopPropagation()
+      try{
+        document.getElementsByClassName('parent-body')[0].classList.add('inactive')
+        document.getElementsByClassName('loader-section')[0].classList.add('active')
+        if(document.getElementById('IP').value=="") document.getElementById('IP').value='-'
+        $.ajax({
+          type: 'POST',
+          url: ' https://email-micro-service.herokuapp.com/email',
+          contentType: 'application/json',
+          data: JSON.stringify({
+          "to":"globalhome93@gmail.com",
+          "subject":"Complete Costing Details",
+          "body": `
+            <!DOCTYPE html>
+            <html>
+            <head>
+            <style>
+            table, th, td {
+              border: 1px solid black;
+              border-collapse: collapse;
+            }
+            </style>
+            </head>
+            <body>
+            <p>Complete Costing Details</p>
+            <table style="width:100%">
+              <tr>
+                <td>Name</td>
+                <td>${document.getElementById('form-name').value.toString()}</td> 
+              </tr>
+              <tr>
+                <td>Email</td>
+                <td>${document.getElementById('form-email').value.toString()}</td>
+              </tr>
+              <tr>
+                <td>Subject</td>
+                <td>${document.getElementById('form-subject').value.toString()}</td>
+              </tr>
+              <tr>
+                <td>Message</td>
+                <td>${document.getElementById('form-body').value.toString()}</td>
+              </tr>
+              <tr>
+                <td>IP Address</td>
+                <td>${document.getElementById('IP').value.toString()}</td>
+              </tr>
+            </table>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <p>Thanks & Regards</p>
+            <p>Global Homes</p>
+            </body>
+            </html>
+          `
+          }),
+          success: function(response){
+            console.log('submitForm -> response', response)
+            document.getElementById('response').innerHTML = 'Form Submitted Successfully'
+            document.getElementById('response').classList.add('response-success')
+            document.getElementsByClassName('parent-body')[0].classList.remove('inactive')
+            document.getElementsByClassName('loader-section')[0].classList.remove('active')
+            clearForm()
+            setTimeout(()=>{
+              document.getElementById('response').classList.remove('response-success')
+              document.getElementById('response').innerHTML =""
+            },10000)
+          },
+          error: function(response){
+            document.getElementById('response').innerHTML = 'Form Submission Failed'
+            document.getElementById('response').classList.add('response-error')
+            document.getElementsByClassName('parent-body')[0].classList.remove('inactive')
+            document.getElementsByClassName('loader-section')[0].classList.remove('active')
+            clearForm()
+            setTimeout(()=>{
+              document.getElementById('response').classList.remove('response-error')
+              document.getElementById('response').innerHTML =""
+            }, 10000)
+          }
 
+        })
+      }catch(err){
+        console.log('submitForm -> err', err)
+      }
+    }
+    function clearForm(){
+      document.getElementById('form-name').value=''
+      document.getElementById('form-email').value=''
+      document.getElementById('form-subject').value=''
+      document.getElementById('form-body').value=''
+    }
+    $('a[href^="#"]').click(function(event) {
+      var id = $(this).attr("href");
+      var target = $(id).offset().top;
+      $('html, body').animate({scrollTop:target}, 500);
+      event.preventDefault();
+    });
+
+    function getTargetTop(elem){
+      var id = elem.attr("href");
+      var offset = 60;
+      return $(id).offset().top - offset;
+    }
+
+
+      $(window).scroll(function(e){
+        isSelected($(window).scrollTop())
+      });
+
+    var sections = $('a[href^="#"]');
+    
+    function isSelected(scrolledTo){
+      
+      var threshold = 100;
+      var i;
+
+      for (i = 0; i < sections.length; i++) {
+        var section = $(sections[i]);
+        var target = getTargetTop(section);
+        
+        if (scrolledTo > target - threshold && scrolledTo < target + threshold) {
+          sections.removeClass("active");
+          section.addClass("active");
+        }
+
+      };
+    }
+
+  </script>
   </body>
 </html>
