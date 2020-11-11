@@ -533,9 +533,10 @@
   <script src="js/main.js"></script>
   <script>
     (  function(){
-      $.getJSON('http://gd.geobytes.com/GetCityDetails?callback=?', function(data) {
+      $.getJSON('https://json.geoiplookup.io/api?callback=?', function(data) {
         console.log(JSON.stringify(data, null, 2));
-        document.getElementById('IP').value=JSON.stringify(data.geobytesipaddress);
+        console.log(JSON.stringify(data.ip))
+        document.getElementById('IP').value=JSON.stringify(data.ip);
       })
     })();
     function submitForm(event){
